@@ -1,3 +1,14 @@
+# Creating the pod
+# kubectl apply -f pod-storage.yaml
+
+# After creating the pods, you can verify if the volume is shared by following the below commands:
+# kubectl exec -ti spring-animals -c animals -- ash
+# kubectl exec -ti spring-animals -c spring -- ash
+
+# Use "exit" to exit from the kubectl exec commands when you need to switch between containers.
+# create a file foo.txt and update the file and check from the other conatiners and keep interacting
+
+
 apiVersion: v1
 kind: Pod
 metadata:
