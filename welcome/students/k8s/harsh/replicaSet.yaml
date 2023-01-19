@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: spring-animals
+  labels:
+    app: spring-animals
+    tier: fe
+spec:
+  # here we select the number of pods we wish to start and the selector that tells our replica set which pods it needs 
+  #  to manage
+  replicas: 3
+  selector:  # Using the selector we tell our replicaset which pods to manage
+    matchLabels:
+      tier: spring-animal
+  template:   # here we define our PODS Specs (k8s uses go template in the background)
+    metadata:
+      labels:
+        tier: spring-animal
+    spec:
+      containers:
+      - name: animals
+        image: supergiantkir/animals:bear
+        volumeMounts:
+        - name: app-storage
+          mountPath: /storage
+      - name: spring
+        image: yanivomc/spring-music:latest
+        volumeMounts:
+        - name: app-storage
+          mountPath: /storage
+      volumes:
+      - name: app-storage
+        hostPath:
+          # directory location on host
+          path: /tmp/files
+          # this field is optional
+          type: DirectoryOrCreate
