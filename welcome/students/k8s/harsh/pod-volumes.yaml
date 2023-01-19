@@ -4,12 +4,12 @@ metadata:
   name: spring-animals
 spec:
   containers:
-  - name: app1
+  - name: animals
     image: supergiantkir/animals:bear
     volumeMounts:
     - name: app-storage
       mountPath: /storage
-  - name: app2
+  - name: spring
     image: yanivomc/spring-music:latest
     volumeMounts:
     - name: app-storage
