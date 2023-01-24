@@ -1,0 +1,56 @@
+# Get deployment
+##kubectl get deployment
+
+# List the pods created by the Deployment
+##kubectl get pods -l app=nginx -o wide
+
+# Describe the deployment we created
+##kubectl describe deployment/nginx-deployment
+
+# Change the nginx image tag version from: nginx:mainline-alpine - to - nginx:latest 
+# Save the file and run kubectl apply -f [filename] 
+# Once deployed please run the following 
+
+# Get deployment
+##kubectl get deployment
+
+# Get replicasets
+##kubectl get replicasets
+
+
+# See rollout status of the deployment 
+##kubectl rollout status deployment/nginx-deployment
+
+# See rollout versions 
+#kubectl rollout history deployment/nginx-deployment
+
+##kubectl scale deployment nginx-deployment --replicas=4
+
+#send for review: kubectl get pods > to chat
+# Delete the deployment
+# To delete all the objects created in a spec we can use
+##kubectl delete -f [filename]
+
+# Please delete all objects
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 
+  template: 
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        #image: nginx:mainline-alpine
+        image: nginx:latest
+        ports:
+        - containerPort: 80
