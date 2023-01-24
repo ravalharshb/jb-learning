@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment-rollout
+  name: animal-moose-deployment-rollout
 spec:
   strategy:
     rollingUpdate:
@@ -10,15 +10,15 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: nginx
-  replicas: 2 
+      app: animal-deploy
+  replicas: 1 
   template: 
     metadata:
       labels:
-        app: nginx
+        app: animal-deploy
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: animal-moose
+        image: supergiantkir/animals:moose
         ports:
         - containerPort: 80
