@@ -1,5 +1,6 @@
 When the Name is not used, we see the service as:
 
+```
 kubectl describe svc animals-bear-moose-svc
 Name:                     animals-bear-moose-svc
 Namespace:                default
@@ -17,9 +18,10 @@ TargetPort:               80/TCP
 NodePort:                 **<unset>**  31858/TCP
 Endpoints:                100.121.145.83:80,100.121.145.84:80
 Session Affinity:         None
+```
 
 When I added the name for the port, we see the service at:
-
+```
 kubectl describe svc animals-bear-moose-svc
 Name:                     animals-bear-moose-svc
 Namespace:                default
@@ -38,3 +40,4 @@ NodePort:                 **http-web**  31858/TCP
 Endpoints:                100.121.145.83:80,100.121.145.84:80
 Session Affinity:         None
 External Traffic Policy:  Cluster
+```
