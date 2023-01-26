@@ -7,12 +7,12 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app: animal-deploy
-  replicas: 1 
+      app: bear-deploy
+  replicas: 2 
   template: 
     metadata:
       labels:
-        app: animal-deploy
+        app: bear-deploy
     spec:
       containers:
       - name: animal-bear

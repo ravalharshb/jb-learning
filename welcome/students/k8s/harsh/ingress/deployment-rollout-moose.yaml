@@ -10,12 +10,12 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: animal-deploy
-  replicas: 1 
+      app: moose-deploy
+  replicas: 2 
   template: 
     metadata:
       labels:
-        app: animal-deploy
+        app: moose-deploy
     spec:
       containers:
       - name: animal-moose

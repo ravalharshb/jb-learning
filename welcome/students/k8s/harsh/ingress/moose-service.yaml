@@ -6,7 +6,7 @@ spec:
   # Mentioned not to use LoadBalancer
   #type: LoadBalancer
   selector:
-    app: animal-deploy
+    app: moose-deploy
   ports:
   - name: http-web #Ingress will mention it points to port mapping this to help
     protocol: TCP
