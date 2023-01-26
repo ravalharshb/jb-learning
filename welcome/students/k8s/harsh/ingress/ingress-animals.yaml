@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: animals-ingress
+  labels:
+    app: animals
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 # We strip the prefix before it passes to our backend or our app wont load as it will get route /bears instead /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /app1(/|$)(.*)
+        backend:
+          service:
+            name: animals-bear-svc
+            port: 
+              name: http-web
+      - pathType: Prefix
+        path: /app2(/!$)(.*)
+        backend:
+          service:
+            name: animals-moose-svc
+            port:
+              name: http-web

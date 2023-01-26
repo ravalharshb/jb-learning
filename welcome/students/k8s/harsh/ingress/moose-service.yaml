@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: animals-moose-svc
+spec:
+  # Mentioned not to use LoadBalancer
+  #type: LoadBalancer
+  selector:
+    app: animal-deploy
+  ports:
+  - name: http-web #Ingress will mention it points to port mapping this to help
+    protocol: TCP
+    port: 80
+    targetPort: 80
