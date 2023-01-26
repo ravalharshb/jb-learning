@@ -12,14 +12,16 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: /app1(/|$)(.*)
+        path: /Bear(/|$)(.*)
         backend:
           service:
             name: animals-bear-svc
             port: 
               name: http-web
+  - http:
+      paths:
       - pathType: Prefix
-        path: /app2(/!$)(.*)
+        path: /Moose(/!$)(.*)
         backend:
           service:
             name: animals-moose-svc
