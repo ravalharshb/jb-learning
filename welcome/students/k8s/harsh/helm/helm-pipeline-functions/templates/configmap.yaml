@@ -1,0 +1,16 @@
+# All resources that need to be created need to be in templates directory
+# helm install spring-music ./spring-music
+# helm uninstall spring-music
+# helm install spring-music ./spring-music --debug --dry-run
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-configmap
+data:
+  dbname: {{.Values.database_test.dbname}}
+  dbtable: {{.Values.database_test.dbtable}}
+  image: {{.Values.pods.image}}:{{.Values.pods.tag}}
+  drink: {{.Values.food.drink | upper}} # Using the funtions to change value, this gives value as "BEER"
+  eat: {{.Values.food.eat | trunc 13 | upper | quote}} # Using the funtions to change value, this gives value as "PEANUT BUTTER"
+
+  
