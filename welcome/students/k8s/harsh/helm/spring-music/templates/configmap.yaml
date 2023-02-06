@@ -13,5 +13,6 @@ data:
   #dbtable: {{.Values.dbtable}}
   dbname: {{.Values.database_test.dbname}}
   dbtable: {{.Values.database_test.dbtable}}
+  image: {{.Values.pods.image}}:{{.Values.pods.tag}}
 
   

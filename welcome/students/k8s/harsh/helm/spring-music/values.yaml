@@ -10,3 +10,4 @@ database_test:
   dbtable: music
 pods: 
   image: yanivomc/spring-music
+  tag: latest
