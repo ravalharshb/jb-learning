@@ -1,0 +1,5 @@
+schedule: "* * * * *"
+image: alpine
+tag: latest
+command: echo "hello world"
+
