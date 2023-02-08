@@ -1,0 +1,12 @@
+service:
+  spec_type_non_local: LoadBalancer
+  spec_type_local: NodePort
+  port_name: http
+  node_port: 80
+deployment:
+  replica_val: 2
+  container_name: spring-music
+  container_port: 8080
+pods:
+  image: yanivomc/spring-music
+  tag: latest

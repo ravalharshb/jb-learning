@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    {{- include "labels.generic" . | indent 4 }}
+spec:
+# ADD IF ENV=LOCAL > TYPE:NODEPORT ELSE >
+{{ if eq .Values.ENV "LOCAL" }}
+  type: {{ .Values.service.spec_type_local }} 
+{{ else }}  
+  type: {{ .Values.service.spec_type_non_local }}
+{{ end }}
+  ports:
+    - name: {{ .Values.service.port_name}}
+      protocol: TCP
+      port: {{ .Values.service.node_port}}
+      targetPort: {{ .Values.deployment.container_port }}
+  selector:
+    {{- include "labels.generic" . | indent 4 }}

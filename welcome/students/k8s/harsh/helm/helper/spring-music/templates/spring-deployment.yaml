@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-{{ .Chart.Version }}
+  labels:
+    {{- include "labels.generic" . | indent 4 }}
+spec:
+  replicas: {{ .Values.deployment.replica_val }}
+  selector:
+    matchLabels:
+      {{- include "labels.generic" . | indent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "labels.generic" . | indent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.deployment.container_name }}
+          image: {{ .Values.pods.image }}:{{ .Values.pods.tag}}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: {{ .Values.service.port_name}}
+              containerPort: {{ .Values.deployment.container_port }}
+              protocol: TCP
