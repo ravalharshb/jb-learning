@@ -33,3 +33,9 @@ Get the initial password (user is: admin ) :
 ```bash
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
+
+Test access to ui:
+
+To browse: 
+https://<External-IP from kubectl get svc argocd-server -n argocd>
+
